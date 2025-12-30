@@ -1,0 +1,27 @@
+# Pastas geradas pela Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+
+# Arquivos gerados
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+# Sistema
+.DS_Store
+Thumbs.db
