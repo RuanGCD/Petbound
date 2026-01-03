@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a999722e089c012498ffe3ca18cf03cd, type: 3}
-  m_Name: Gael
+  m_Name: calopsita
   m_EditorClassIdentifier: 
-  petName: Gael
-  icon: {fileID: -6775257085196571363, guid: 9e0d38cf45d1993498a3eb0a1038f71f, type: 3}
-  baseAttack: 2
-  baseHealth: 4
+  petName: calopsita
+  icon: {fileID: -1567732436491955660, guid: 589b775eac744684e9d80cc196245b2b, type: 3}
+  baseAttack: 1
+  baseHealth: 1
   maxLevel: 3
   tier: 0
   abilityData: {fileID: 0}

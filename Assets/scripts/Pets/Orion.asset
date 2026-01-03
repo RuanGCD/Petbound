@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Orion
   m_EditorClassIdentifier: 
   petName: Orion
-  icon: {fileID: 2855166695700521220, guid: cde907a9f7e3b19469ee657c27c9d621, type: 3}
+  icon: {fileID: -6768376217411727877, guid: 57ce7be03ab6aef4cbf39a8131854fb7, type: 3}
   baseAttack: 1
   baseHealth: 3
   maxLevel: 3
   tier: 0
+  abilityData: {fileID: 0}

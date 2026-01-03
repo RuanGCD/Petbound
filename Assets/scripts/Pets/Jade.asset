@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Jade
   m_EditorClassIdentifier: 
   petName: Jade
-  icon: {fileID: -7345344877832902650, guid: a2481f9c073c49540a417ef25e1fc90d, type: 3}
+  icon: {fileID: -5708706790410118006, guid: 4eb5d2ee907481649bef83ae88f7afcd, type: 3}
   baseAttack: 3
   baseHealth: 3
   maxLevel: 3
   tier: 0
+  abilityData: {fileID: 11400000, guid: d629670ac5e464c4ba0927ac55c79099, type: 2}

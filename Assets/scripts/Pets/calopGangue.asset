@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: calopGangue
   m_EditorClassIdentifier: 
   petName: CalopGangue
-  icon: {fileID: 0}
+  icon: {fileID: -1567732436491955660, guid: 589b775eac744684e9d80cc196245b2b, type: 3}
   baseAttack: 1
   baseHealth: 2
   maxLevel: 3
   tier: 0
+  abilityData: {fileID: 11400000, guid: 1686d4c6c85df73478760b6cf6731b57, type: 2}

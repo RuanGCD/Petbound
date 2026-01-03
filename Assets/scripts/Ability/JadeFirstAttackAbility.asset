@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a999722e089c012498ffe3ca18cf03cd, type: 3}
-  m_Name: Gael
+  m_Script: {fileID: 11500000, guid: 198677415c0417840a08294853817435, type: 3}
+  m_Name: JadeFirstAttackAbility
   m_EditorClassIdentifier: 
-  petName: Gael
-  icon: {fileID: -6775257085196571363, guid: 9e0d38cf45d1993498a3eb0a1038f71f, type: 3}
-  baseAttack: 2
-  baseHealth: 4
-  maxLevel: 3
-  tier: 0
-  abilityData: {fileID: 0}
+  abilityID: jade_first_attack
+  onPreCombat: 0
+  onAttack: 1
+  onDeath: 0
+  onKill: 0
+  value1: 0
+  value2: 0
+  valueFloat: 0

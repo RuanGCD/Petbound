@@ -5,6 +5,11 @@ public class PetRuntime
     public int attack;
     public int health;
     public int maxHealth;
+    public int tempAttackBonus = 0;
+    public bool hasAttackedThisBattle = false;
+    public int TotalAttack => attack + tempAttackBonus;
+    public bool isTemporarySummon = false;
+    public bool isDead = false;
 
 
     public int level = 1;
@@ -50,5 +55,10 @@ public class PetRuntime
         }
 
         return false;
+    }
+    public void ResetTemporaryStats()
+    {
+        tempAttackBonus = 0;
+        hasAttackedThisBattle = false;
     }
 }

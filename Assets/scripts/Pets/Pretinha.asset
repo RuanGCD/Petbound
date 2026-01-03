@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pretinha
   m_EditorClassIdentifier: 
   petName: Pretinha
-  icon: {fileID: 5132487461796990751, guid: 16dc0120073221b40ae8577e9cb84225, type: 3}
+  icon: {fileID: 6813852884939219756, guid: 7d11f9b97c64ab04495281438f2b5db9, type: 3}
   baseAttack: 2
   baseHealth: 3
   maxLevel: 3

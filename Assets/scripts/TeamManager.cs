@@ -39,22 +39,43 @@ public class TeamManager : MonoBehaviour
     if (!existing.CanGainXp())
         return false;
 
-    // 🔹 MERGE
-    existing.attack += incoming.attack;
-    existing.health += incoming.health;
-    existing.maxHealth += incoming.maxHealth;
-    existing.xp++;
+    // =========================
+    // 🔁 MERGE CORRETO
+    // =========================
 
+    // 1️⃣ mantém o MAIOR ataque e vida
+    existing.attack = Mathf.Max(existing.attack, incoming.attack);
+    existing.health = Mathf.Max(existing.health, incoming.health);
+    existing.maxHealth = Mathf.Max(existing.maxHealth, incoming.maxHealth);
+
+    // 2️⃣ bônus fixo de merge
+    int bonusAtk = 1;
+    int bonusHp = 1;
+
+    // se esse merge causar level up, o bônus muda
+    int previousLevel = existing.level;
+
+    existing.xp++;
     bool leveledUp = existing.TryLevelUp();
 
-    if (leveledUp)
+    if (leveledUp && previousLevel == 2)
     {
-        Debug.Log(existing.data.petName + " subiu para o Level " + existing.level);
-        // futuramente: AbilitySystem.OnLevelUp(existing)
+        // Lv2 → Lv3
+        bonusAtk = 2;
+        bonusHp = 2;
     }
+
+    existing.attack += bonusAtk;
+    existing.health += bonusHp;
+    existing.maxHealth += bonusHp;
+
+    Debug.Log(
+        $"[MERGE] {existing.data.petName} Lv {existing.level} | +{bonusAtk} ATK / +{bonusHp} HP"
+    );
 
     return true;
 }
+
 
 
     // 🔁 SWAP (inalterado)

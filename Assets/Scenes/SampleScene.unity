@@ -426,6 +426,7 @@ MonoBehaviour:
   deathDelay: 0.35
   attackDelay: 0.6
   arrowPrefab: {fileID: 7480344063525309809, guid: 0cde0b087cbbe00468036c2b660bc2fa, type: 3}
+  calopsitaData: {fileID: 11400000, guid: 7d581421cbad19a4d8f617be7739c64c, type: 2}
 --- !u!4 &113052351
 Transform:
   m_ObjectHideFlags: 0
@@ -2162,6 +2163,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2169,6 +2172,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2176,6 +2181,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2183,6 +2190,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2190,6 +2199,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
 --- !u!4 &1088595652
@@ -2411,6 +2422,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2418,6 +2431,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2425,6 +2440,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2432,6 +2449,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
   - pet:
@@ -2439,6 +2458,8 @@ MonoBehaviour:
       attack: 0
       health: 0
       maxHealth: 0
+      tempAttackBonus: 0
+      hasAttackedThisBattle: 0
       level: 0
       xp: 0
 --- !u!4 &1316057569
@@ -2495,6 +2516,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfeae491b30f5c648b470cfc641e7195, type: 2}
   - {fileID: 11400000, guid: f2933a5af2ac74c47a8515a416d3a977, type: 2}
   - {fileID: 11400000, guid: ca7087e7a5dc1034ca5aa5cb077898e8, type: 2}
+  - {fileID: 11400000, guid: e26b27d761d95624fb8eb07602c337d6, type: 2}
   availableFoods:
   - {fileID: 11400000, guid: ec022c1682ff00846bd12c3e2cd9ea15, type: 2}
   - {fileID: 11400000, guid: af09f92194e2b3b44ba352c6eff45f2b, type: 2}

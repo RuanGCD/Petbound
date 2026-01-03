@@ -94,20 +94,32 @@ public class TeamSlotUI : MonoBehaviour
     // ======================
     // BATTLE MODE
     // ======================
-    public void SetupForBattle(PetRuntime pet)
-    {
-        mode = TeamSlotMode.Battle;
+   public void SetupForBattle(PetRuntime pet)
+{
+    mode = TeamSlotMode.Battle;
 
-        slot = null;
-        CurrentPet = pet;
-        battlePet = pet;
-        onClickCallback = null;
+    slot = null;
+    onClickCallback = null;
 
-        if (button != null)
-            button.interactable = false;
+    if (button != null)
+        button.interactable = false;
 
-        Refresh();
-    }
+    // 🔥 LIMPEZA REAL
+    battlePet = null;
+    CurrentPet = null;
+    ClearUI();
+
+    // 🔁 AGORA SETA O NOVO PET
+    battlePet = pet;
+    CurrentPet = pet;
+
+    if (pet == null)
+        return;
+
+    Refresh();
+}
+
+
 
     // ======================
     // CLICK
@@ -129,9 +141,6 @@ public class TeamSlotUI : MonoBehaviour
         Debug.LogError("[TeamSlotUI] onClickCallback NULL");
     }
 }
-
-
-
 
     // ======================
     // REFRESH
@@ -162,6 +171,11 @@ public class TeamSlotUI : MonoBehaviour
         }
 
         petToShow = battlePet;
+        Debug.Log(
+    $"[BattleSlotUI] Slot({name}) | battlePet ref = {battlePet?.data.petName} | " +
+    $"ATK {battlePet?.TotalAttack} | HP {battlePet?.health}"
+);
+
     }
 
     // ======================
@@ -172,7 +186,11 @@ public class TeamSlotUI : MonoBehaviour
     iconImage.enabled = true;
     iconImage.sprite = petToShow.data.icon;
 
-    attackText.text = petToShow.attack.ToString();
+    if (mode == TeamSlotMode.Battle){
+        attackText.text = petToShow.TotalAttack.ToString();
+    }else{
+        attackText.text = petToShow.attack.ToString();
+    }
     healthText.text = petToShow.health.ToString();
 
     // ======================
@@ -373,6 +391,4 @@ void UpdateLevelUI(PetRuntime pet)
             xpBars[i].color = xpOffColor;
     }
 }
-
-
 }

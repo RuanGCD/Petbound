@@ -24,6 +24,9 @@ public class BattleManager : MonoBehaviour
     public float attackDelay = 0.6f;
     [Header("Effects")]
     public ArrowProjectile arrowPrefab;
+    public PetData calopsitaData;
+    private List<PetRuntime> battleTeamA;
+    private List<PetRuntime> battleTeamB;
 
 
     void Start()
@@ -44,6 +47,10 @@ public class BattleManager : MonoBehaviour
 
     shopCanvas.SetActive(false);
     battleCanvas.SetActive(true);
+
+    // cria snapshot apenas para o combate
+    battleTeamA = new List<PetRuntime>(playerTeam.GetLivingPets());
+    battleTeamB = new List<PetRuntime>(enemyTeam.GetLivingPets());
 
     SetupBattleSlots();
 
@@ -81,82 +88,116 @@ public class BattleManager : MonoBehaviour
     // BATALHA
     // =========================
     IEnumerator BattleRoutine()
+{
+    List<PetRuntime> teamA = battleTeamA;
+    List<PetRuntime> teamB = battleTeamB;
+
+    while (teamA.Count > 0 && teamB.Count > 0)
     {
-        List<PetRuntime> teamA = playerTeam.GetLivingPets();
-        List<PetRuntime> teamB = enemyTeam.GetLivingPets();
+        PetRuntime a = teamA[0];
+        PetRuntime b = teamB[0];
 
+        // ======================
+        // 1️⃣ AVANÇO PARA O CHOQUE
+        // ======================
+        if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
+            playerBattleSlots[0].PlayAttackMove();
 
-        while (teamA.Count > 0 && teamB.Count > 0)
+        if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
+            enemyBattleSlots[0].PlayAttackMove();
+
+        yield return new WaitForSeconds(impactDelay);
+
+        // ======================
+        // SHAKE DE IMPACTO
+        // ======================
+        if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
+            StartCoroutine(playerBattleSlots[0].PlayImpactShake());
+
+        if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
+            StartCoroutine(enemyBattleSlots[0].PlayImpactShake());
+
+        // ======================
+        // 2️⃣ EVENTO DE ATAQUE
+        // ======================
+        if (a.ability != null)
+            a.ability.OnAttack(CreatePlayerContext(), b);
+
+        if (b.ability != null)
+            b.ability.OnAttack(CreateEnemyContext(), a);
+
+        // ======================
+        // 3️⃣ APLICA DANO
+        // ======================
+        b.health -= a.TotalAttack;
+        a.health -= b.TotalAttack;
+
+        if (a.health < 0) a.health = 0;
+        if (b.health < 0) b.health = 0;
+
+        // ======================
+        // 4️⃣ FLASH DE DANO
+        // ======================
+        if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
+            playerBattleSlots[0].PlayFlash();
+
+        if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
+            enemyBattleSlots[0].PlayFlash();
+
+        yield return new WaitForSeconds(impactDelay);
+
+        UpdateBattleUI(teamA, teamB);
+
+        bool aDied = a.health <= 0;
+        bool bDied = b.health <= 0;
+
+        // 🔒 GUARDA SE DEVE ATIVAR ON DEATH
+        bool triggerAOnDeath = aDied && !a.isDead && a.ability != null;
+        bool triggerBOnDeath = bDied && !b.isDead && b.ability != null;
+
+        if (aDied || bDied)
+            yield return new WaitForSeconds(deathDelay);
+
+        // ======================
+        // REMOÇÃO + ANIMAÇÃO
+        // ======================
+        if (aDied && playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
         {
-            PetRuntime a = teamA[0];
-            PetRuntime b = teamB[0];
+            a.isDead = true;
 
-            // 1️⃣ AVANÇO PARA O CHOQUE
-if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
-    playerBattleSlots[0].PlayAttackMove();
-
-if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
-    enemyBattleSlots[0].PlayAttackMove();
-
-// ESPERA O CHOQUE
-yield return new WaitForSeconds(impactDelay);
-
-// SHAKE DE IMPACTO
-if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
-    StartCoroutine(playerBattleSlots[0].PlayImpactShake());
-
-if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
-    StartCoroutine(enemyBattleSlots[0].PlayImpactShake());
-
-// 2️⃣ APLICA DANO
-b.health -= a.attack;
-a.health -= b.attack;
-
-// 3️⃣ FLASH DE DANO
-if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
-    playerBattleSlots[0].PlayFlash();
-
-if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
-    enemyBattleSlots[0].PlayFlash();
-
-            // 🔧 FLASH SEM BLOQUEAR
-            if (playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
-                playerBattleSlots[0].PlayFlash();
-
-            if (enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
-                enemyBattleSlots[0].PlayFlash();
-
-            yield return new WaitForSeconds(impactDelay);
-
-            UpdateBattleUI(teamA, teamB);
-
-            bool aDied = a.health <= 0;
-            bool bDied = b.health <= 0;
-
-            if (aDied || bDied)
-                yield return new WaitForSeconds(deathDelay);
-
-            // MORTE COM QUEDA
-            if (aDied && playerBattleSlots.Count > 0 && playerBattleSlots[0] != null)
-            {
-                 yield return StartCoroutine(playerBattleSlots[0].PlayDeathFall());
-                teamA.RemoveAt(0);
-            }
-
-            if (bDied && enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
-            {
-                yield return StartCoroutine(enemyBattleSlots[0].PlayDeathFall());
-                teamB.RemoveAt(0);
-            }
-
-
-            UpdateBattleUI(teamA, teamB);
-
-            yield return new WaitForSeconds(attackDelay);
+            yield return StartCoroutine(playerBattleSlots[0].PlayDeathFall());
+            teamA.RemoveAt(0);
         }
 
-        EndBattle(teamA.Count, teamB.Count);
+        if (bDied && enemyBattleSlots.Count > 0 && enemyBattleSlots[0] != null)
+        {
+            b.isDead = true;
+
+            yield return StartCoroutine(enemyBattleSlots[0].PlayDeathFall());
+            teamB.RemoveAt(0);
+        }
+
+        // ======================
+        // ☠️ ON DEATH (AGORA COM SLOT LIVRE)
+        // ======================
+        if (triggerAOnDeath)
+            a.ability.OnDeath(CreatePlayerContext());
+
+        if (triggerBOnDeath)
+            b.ability.OnDeath(CreateEnemyContext());
+
+        // ======================
+        // ATUALIZA UI FINAL
+        // ======================
+        UpdateBattleUI(teamA, teamB);
+
+        yield return new WaitForSeconds(attackDelay);
     }
+
+    EndBattle(teamA.Count, teamB.Count);
+}
+
+
 
     // =========================
     // UI
@@ -215,42 +256,42 @@ void ReturnToShop()
     shopCanvas.SetActive(true);
 
     // ======================
-    // RESET DE VIDA DOS PETS (OBRIGATÓRIO)
+    // REMOVE PETS INVOCADOS (CALOPSITAS)
     // ======================
-    ResetTeamHealth(playerTeam);
+    RemoveSummonedPets(playerTeam);
+    RemoveSummonedPets(enemyTeam);
 
     // ======================
-    // AVANÇA ROUND / RESET PLAYER
+    // RESET DE VIDA
+    // ======================
+    ResetTeamHealth(playerTeam);
+    ResetTeamHealth(enemyTeam);
+
+    // ======================
+    // RESET DE STATS TEMPORÁRIOS
+    // ======================
+    ResetTeamTemporaryStats(playerTeam);
+    ResetTeamTemporaryStats(enemyTeam);
+
+    // ======================
+    // AVANÇA ROUND
     // ======================
     playerState.StartNewRound();
 
     // ======================
-    // ATUALIZA LOJA (ESSENCIAL)
+    // ATUALIZA LOJA
     // ======================
     ShopManager shopManager = FindObjectOfType<ShopManager>();
     if (shopManager != null)
-    {
         shopManager.GenerateShop();
-    }
-    else
-    {
-        Debug.LogWarning("ShopManager não encontrado ao retornar da batalha");
-    }
 
     // ======================
-    // ATUALIZA UI DO TIME
+    // ATUALIZA UI
     // ======================
     TeamManagerUI teamUI = FindObjectOfType<TeamManagerUI>();
     if (teamUI != null)
-    {
         teamUI.RefreshAll();
-    }
-    else
-    {
-        Debug.LogWarning("TeamManagerUI não encontrado ao retornar da batalha");
-    }
 }
-
 
 
     // =========================
@@ -335,14 +376,119 @@ TeamSlotUI FindSlotUI(PetRuntime pet)
 }
 IEnumerator BattleFlow()
 {
-    // 1️⃣ PRÉ-COMBATE
+    // 🔁 RESET DE ESTADO DE BATALHA
+    ResetBattleAbilities();
+
+    // PRÉ-COMBATE
     yield return StartCoroutine(ExecutePreCombatAbilitiesRoutine());
 
-    // 2️⃣ PEQUENA PAUSA DRAMÁTICA 😈
     yield return new WaitForSeconds(0.3f);
 
-    // 3️⃣ COMBATE NORMAL
+    // COMBATE
     yield return StartCoroutine(BattleRoutine());
 }
+
+
+BattleContext CreatePlayerContext()
+{
+    return new BattleContext
+    {
+        allyTeam = playerTeam,
+        enemyTeam = enemyTeam,
+        battleManager = this,
+        isPlayer = true
+    };
+}
+
+BattleContext CreateEnemyContext()
+{
+    return new BattleContext
+    {
+        allyTeam = enemyTeam,
+        enemyTeam = playerTeam,
+        battleManager = this,
+        isPlayer = false
+    };
+}
+void ResetTeamTemporaryStats(TeamManager team)
+{
+    foreach (var slot in team.slots)
+    {
+        if (slot.IsEmpty) continue;
+
+        slot.pet.ResetTemporaryStats();
+    }
+}
+public void SpawnCalopsitasAtFront(int amount, bool isPlayer)
+{
+    List<PetRuntime> team = isPlayer ? battleTeamA : battleTeamB;
+
+    for (int i = 0; i < amount; i++)
+    {
+        if (team.Count >= 5)
+            break;
+
+        PetRuntime calopsita = CreateCalopsitaRuntime();
+
+        // 🔥 SEMPRE entra na frente
+        team.Insert(0, calopsita);
+    }
+}
+
+
+public PetRuntime CreateCalopsitaRuntime()
+{
+    PetRuntime pet = new PetRuntime(calopsitaData);
+    
+    // 🔒 TRAVA ABSOLUTA DE STATUS
+    pet.attack = 1;
+    pet.health = 1;
+    pet.maxHealth = 1;
+
+    // 🔒 NÃO HERDA NADA
+    pet.tempAttackBonus = 0;
+    pet.level = 1;
+    pet.xp = 0;
+    pet.ability = null;
+
+    pet.isTemporarySummon = true;
+
+    return pet;
+}
+
+void RemoveSummonedPets(TeamManager team)
+{
+    for (int i = 0; i < team.slots.Count; i++)
+    {
+        if (team.slots[i].IsEmpty)
+            continue;
+
+        PetRuntime pet = team.slots[i].pet;
+
+        if (pet.isTemporarySummon)
+        {
+            team.slots[i].pet = null;
+        }
+    }
+}
+void ResetBattleAbilities()
+{
+    ResetBattleTeam(battleTeamA);
+    ResetBattleTeam(battleTeamB);
+}
+
+void ResetBattleTeam(List<PetRuntime> team)
+{
+    foreach (var pet in team)
+    {
+        if (pet?.ability is CalopgangueOnDeathAbility calop)
+        {
+            calop.ResetForBattle();
+        }
+
+        pet.isDead = false; 
+    }
+}
+
 
 }
