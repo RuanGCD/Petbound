@@ -283,7 +283,8 @@ void ReturnToShop()
     // ======================
     ShopManager shopManager = FindObjectOfType<ShopManager>();
     if (shopManager != null)
-        shopManager.GenerateShop();
+        shopManager.OnReturnFromBattle();
+
 
     // ======================
     // ATUALIZA UI

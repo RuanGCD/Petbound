@@ -1,0 +1,486 @@
+fileFormatVersion: 2
+guid: 37022bd09a5574f4fa1b3e500f59dcad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8343240212616086158
+    second: heal_effect_sprite_fixed_0
+  - first:
+      213: 3161045309957696327
+    second: heal_effect_sprite_fixed_1
+  - first:
+      213: -7065175404641202179
+    second: heal_effect_sprite_fixed_2
+  - first:
+      213: 1727775614501148713
+    second: heal_effect_sprite_fixed_3
+  - first:
+      213: 309781862053327026
+    second: heal_effect_sprite_fixed_4
+  - first:
+      213: -1917540694668410559
+    second: heal_effect_sprite_fixed_5
+  - first:
+      213: -2801819521102917524
+    second: heal_effect_sprite_fixed_6
+  - first:
+      213: 4401779207765562069
+    second: heal_effect_sprite_fixed_7
+  - first:
+      213: 1323586895264132386
+    second: heal_effect_sprite_fixed_8
+  - first:
+      213: -5849408406410011121
+    second: heal_effect_sprite_fixed_9
+  - first:
+      213: 6928869431838259728
+    second: heal_effect_sprite_fixed_10
+  - first:
+      213: -6704774973340371591
+    second: heal_effect_sprite_fixed_11
+  - first:
+      213: 8096952372659684873
+    second: heal_effect_sprite_fixed_12
+  - first:
+      213: 6985552755967386154
+    second: heal_effect_sprite_fixed_13
+  - first:
+      213: 6970498895026058346
+    second: heal_effect_sprite_fixed_14
+  - first:
+      213: 3680014059233824860
+    second: heal_effect_sprite_fixed_15
+  - first:
+      213: 8718778314009316588
+    second: heal_effect_sprite_fixed_16
+  - first:
+      213: 3202551723018622382
+    second: heal_effect_sprite_fixed_17
+  - first:
+      213: -8684815121665625461
+    second: heal_effect_sprite_fixed_18
+  - first:
+      213: 8913688432184970229
+    second: heal_effect_sprite_fixed_19
+  - first:
+      213: 6567363760221013330
+    second: heal_effect_sprite_fixed_20
+  - first:
+      213: -1295254012769069035
+    second: heal_effect_sprite_fixed_21
+  - first:
+      213: -6776702726526748474
+    second: heal_effect_sprite_fixed_22
+  - first:
+      213: 3506108619374128884
+    second: heal_effect_sprite_fixed_23
+  - first:
+      213: 8579539424004275015
+    second: heal_effect_sprite_fixed_24
+  - first:
+      213: -2886950587121457703
+    second: heal_effect_sprite_fixed_25
+  - first:
+      213: 4118606640597952260
+    second: heal_effect_sprite_fixed_26
+  - first:
+      213: 6710709174037527724
+    second: heal_effect_sprite_fixed_27
+  - first:
+      213: -5380511049656780797
+    second: heal_effect_sprite_fixed_28
+  - first:
+      213: 4528014935668570922
+    second: heal_effect_sprite_fixed_29
+  - first:
+      213: 4263158232367190153
+    second: heal_effect_sprite_fixed_30
+  - first:
+      213: 8894940869477607636
+    second: heal_effect_sprite_fixed_31
+  - first:
+      213: -3313104405611099921
+    second: heal_effect_sprite_fixed_32
+  - first:
+      213: 4351660888144580747
+    second: heal_effect_sprite_fixed_33
+  - first:
+      213: 4980253648000841728
+    second: heal_effect_sprite_fixed_34
+  - first:
+      213: 8126292058926646566
+    second: heal_effect_sprite_fixed_35
+  - first:
+      213: 6492445372034116360
+    second: heal_effect_sprite_fixed_36
+  - first:
+      213: -6489387990705557370
+    second: heal_effect_sprite_fixed_37
+  - first:
+      213: 7185744312866674697
+    second: heal_effect_sprite_fixed_38
+  - first:
+      213: -6367705606850278028
+    second: heal_effect_sprite_fixed_39
+  - first:
+      213: 1551828507593343341
+    second: heal_effect_sprite_fixed_40
+  - first:
+      213: -3681034142646324586
+    second: heal_effect_sprite_fixed_41
+  - first:
+      213: -3335800877070343604
+    second: heal_effect_sprite_fixed_42
+  - first:
+      213: -4584225323665193664
+    second: heal_effect_sprite_fixed_43
+  - first:
+      213: 4415710617226328618
+    second: heal_effect_sprite_fixed_44
+  - first:
+      213: 7644534268550592984
+    second: heal_effect_sprite_fixed_45
+  - first:
+      213: 5537709508487670200
+    second: heal_effect_sprite_fixed_46
+  - first:
+      213: 8039717655353111613
+    second: heal_effect_sprite_fixed_47
+  - first:
+      213: -1029843824742313045
+    second: heal_effect_sprite_fixed_48
+  - first:
+      213: -106901817824697050
+    second: heal_effect_sprite_fixed_49
+  - first:
+      213: -9173944405703881022
+    second: heal_effect_sprite_fixed_50
+  - first:
+      213: 4673070175967960424
+    second: heal_effect_sprite_fixed_51
+  - first:
+      213: -1781456942310275385
+    second: heal_effect_sprite_fixed_52
+  - first:
+      213: 690659952441745565
+    second: heal_effect_sprite_fixed_53
+  - first:
+      213: 428230239238487766
+    second: heal_effect_sprite_fixed_54
+  - first:
+      213: -4510226117842125763
+    second: heal_effect_sprite_fixed_55
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 544
+        width: 224
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d73432b3bd63c80800000000000000
+      internalID: -8343240212616086158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_11
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 559
+        width: 232
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9753e176faad3f2a0800000000000000
+      internalID: -6704774973340371591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_23
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 556
+        width: 185
+        height: 215
+      alignment: 9
+      pivot: {x: 0.52103466, y: 0.45615596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4feeab1963338a030800000000000000
+      internalID: 3506108619374128884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_38
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 248
+        width: 215
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 908933f7164e8b360800000000000000
+      internalID: 7185744312866674697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_41
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 246
+        width: 222
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6923b7143f65aecc0800000000000000
+      internalID: -3681034142646324586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_effect_sprite_fixed_44
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 242
+        width: 215
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2a32b23961c74d30800000000000000
+      internalID: 4415710617226328618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 395a7269d1037a5439d13831cc84a2f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      heal_effect_sprite_fixed_0: -8343240212616086158
+      heal_effect_sprite_fixed_1: 3161045309957696327
+      heal_effect_sprite_fixed_10: 6928869431838259728
+      heal_effect_sprite_fixed_11: -6704774973340371591
+      heal_effect_sprite_fixed_12: 8096952372659684873
+      heal_effect_sprite_fixed_13: 6985552755967386154
+      heal_effect_sprite_fixed_14: 6970498895026058346
+      heal_effect_sprite_fixed_15: 3680014059233824860
+      heal_effect_sprite_fixed_16: 8718778314009316588
+      heal_effect_sprite_fixed_17: 3202551723018622382
+      heal_effect_sprite_fixed_18: -8684815121665625461
+      heal_effect_sprite_fixed_19: 8913688432184970229
+      heal_effect_sprite_fixed_2: -7065175404641202179
+      heal_effect_sprite_fixed_20: 6567363760221013330
+      heal_effect_sprite_fixed_21: -1295254012769069035
+      heal_effect_sprite_fixed_22: -6776702726526748474
+      heal_effect_sprite_fixed_23: 3506108619374128884
+      heal_effect_sprite_fixed_24: 8579539424004275015
+      heal_effect_sprite_fixed_25: -2886950587121457703
+      heal_effect_sprite_fixed_26: 4118606640597952260
+      heal_effect_sprite_fixed_27: 6710709174037527724
+      heal_effect_sprite_fixed_28: -5380511049656780797
+      heal_effect_sprite_fixed_29: 4528014935668570922
+      heal_effect_sprite_fixed_3: 1727775614501148713
+      heal_effect_sprite_fixed_30: 4263158232367190153
+      heal_effect_sprite_fixed_31: 8894940869477607636
+      heal_effect_sprite_fixed_32: -3313104405611099921
+      heal_effect_sprite_fixed_33: 4351660888144580747
+      heal_effect_sprite_fixed_34: 4980253648000841728
+      heal_effect_sprite_fixed_35: 8126292058926646566
+      heal_effect_sprite_fixed_36: 6492445372034116360
+      heal_effect_sprite_fixed_37: -6489387990705557370
+      heal_effect_sprite_fixed_38: 7185744312866674697
+      heal_effect_sprite_fixed_39: -6367705606850278028
+      heal_effect_sprite_fixed_4: 309781862053327026
+      heal_effect_sprite_fixed_40: 1551828507593343341
+      heal_effect_sprite_fixed_41: -3681034142646324586
+      heal_effect_sprite_fixed_42: -3335800877070343604
+      heal_effect_sprite_fixed_43: -4584225323665193664
+      heal_effect_sprite_fixed_44: 4415710617226328618
+      heal_effect_sprite_fixed_45: 7644534268550592984
+      heal_effect_sprite_fixed_46: 5537709508487670200
+      heal_effect_sprite_fixed_47: 8039717655353111613
+      heal_effect_sprite_fixed_48: -1029843824742313045
+      heal_effect_sprite_fixed_49: -106901817824697050
+      heal_effect_sprite_fixed_5: -1917540694668410559
+      heal_effect_sprite_fixed_50: -9173944405703881022
+      heal_effect_sprite_fixed_51: 4673070175967960424
+      heal_effect_sprite_fixed_52: -1781456942310275385
+      heal_effect_sprite_fixed_53: 690659952441745565
+      heal_effect_sprite_fixed_54: 428230239238487766
+      heal_effect_sprite_fixed_55: -4510226117842125763
+      heal_effect_sprite_fixed_6: -2801819521102917524
+      heal_effect_sprite_fixed_7: 4401779207765562069
+      heal_effect_sprite_fixed_8: 1323586895264132386
+      heal_effect_sprite_fixed_9: -5849408406410011121
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

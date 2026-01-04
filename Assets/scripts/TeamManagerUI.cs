@@ -27,19 +27,19 @@ public class TeamManagerUI : MonoBehaviour
         RefreshAll();
     }
 
-    // 🔹 Clique em slot
+    //  Clique em slot
     void OnSlotClicked(int index)
 {
     ShopManager shop = FindObjectOfType<ShopManager>();
 
-    // 🟩 PRIORIDADE: se existe pet selecionado na loja → tentar comprar
+    //  PRIORIDADE: compra da loja
     if (shop != null && shop.HasSelectedPet())
     {
         shop.TryPlaceSelectedPet(index);
         return;
     }
 
-    // 🔵 comportamento antigo (seleção / swap)
+    //  Seleção inicial
     if (selectedIndex == -1)
     {
         if (teamManager.slots[index].IsEmpty)
@@ -50,14 +50,38 @@ public class TeamManagerUI : MonoBehaviour
         return;
     }
 
+    //  Clique em outro slot
     if (selectedIndex != index)
     {
+        TeamSlot fromSlot = teamManager.slots[selectedIndex];
+        TeamSlot toSlot   = teamManager.slots[index];
+
+        //  TENTAR MERGE
+        if (!fromSlot.IsEmpty && !toSlot.IsEmpty)
+        {
+            PetRuntime incoming = fromSlot.pet;
+
+            bool merged = teamManager.TryPlacePetAtSlot(incoming, index);
+
+            if (merged)
+            {
+                // remove o pet de origem
+                fromSlot.pet = null;
+
+                ClearSelection();
+                RefreshAll();
+                return;
+            }
+        }
+
+        //  se não deu merge → SWAP normal
         teamManager.SwapPets(selectedIndex, index);
     }
 
     ClearSelection();
     RefreshAll();
 }
+
 
 
     void ClearSelection()

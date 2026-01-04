@@ -27,6 +27,9 @@ public class ShopManager : MonoBehaviour
     // 🔹 NOVO: pet selecionado da loja
     private PetRuntime selectedPet;
     private ShopSlotUI selectedSlotUI;
+    //habilidades
+    private bool firstPurchaseDoneThisRound = false;
+
 
     void Start()
     {
@@ -116,7 +119,9 @@ public class ShopManager : MonoBehaviour
             playerState.gold += playerState.petCost;
             return;
         }
-
+        // 🔹 DISPARA A HABILIDADE
+        
+        TriggerFirstPurchaseAbilities();
         teamManagerUI.RefreshAll();
         RemoveSlot(selectedPet);
 
@@ -208,12 +213,34 @@ public class ShopManager : MonoBehaviour
 }
 public void OnReturnFromBattle()
 {
+     firstPurchaseDoneThisRound = false;
     // limpa seleção
     selectedPet = null;
     selectedSlotUI = null;
 
+     //  INÍCIO DA RODADA
+    foreach (var pet in teamManager.GetAllPets())
+    {
+        if (pet.ability is LiahStartRoundAbility liah)
+            liah.Activate(teamManager);
+        else
+            pet.ability?.OnStartRound();
+    }
+
     // gera loja respeitando freeze
     GenerateShop();
+}
+private void TriggerFirstPurchaseAbilities()
+{
+    if (firstPurchaseDoneThisRound)
+        return;
+
+    firstPurchaseDoneThisRound = true;
+
+    foreach (var pet in teamManager.GetAllPets())
+    {
+        pet.ability?.OnFirstShopPurchase();
+    }
 }
 
 }

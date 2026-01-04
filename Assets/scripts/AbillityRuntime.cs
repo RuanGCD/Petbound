@@ -13,4 +13,8 @@ public abstract class AbilityRuntime
     public virtual void OnAttack(BattleContext ctx, PetRuntime target) { }
     public virtual void OnDeath(BattleContext ctx) { }
     public virtual void OnKill(BattleContext ctx, PetRuntime target) { }
+
+    // 🔹 LOJA / RODADA
+    public virtual void OnFirstShopPurchase() { }
+    public virtual void OnStartRound() { }
 }

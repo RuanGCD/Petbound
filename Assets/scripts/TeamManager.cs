@@ -131,6 +131,18 @@ public void KillPet(PetRuntime pet)
         }
     }
 }
+public List<PetRuntime> GetAllPets()
+{
+    List<PetRuntime> list = new();
+
+    foreach (var slot in slots)
+    {
+        if (!slot.IsEmpty && slot.pet != null)
+            list.Add(slot.pet);
+    }
+
+    return list;
+}
 
 
 }

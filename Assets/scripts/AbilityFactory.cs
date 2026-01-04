@@ -11,10 +11,15 @@ public static class AbilityFactory
 
             case "jade_first_attack":
                 return new JadeFirstAttackAbility();
-                
+
             case "calopgangue_on_death":
                 return new CalopgangueOnDeathAbility();
 
+            case "lupi_first_purchase":
+                return new LupiFirstPurchaseAbility();
+            
+            case "liah_start_round":
+                return new LiahStartRoundAbility();
 
         }
 
