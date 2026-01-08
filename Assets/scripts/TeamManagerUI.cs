@@ -32,6 +32,18 @@ public class TeamManagerUI : MonoBehaviour
 {
     ShopManager shop = FindObjectOfType<ShopManager>();
 
+    //  USAR COMIDA
+if (shop != null && shop.HasSelectedFood())
+{
+    PetRuntime pet = teamManager.slots[index].pet;
+    if (pet == null)
+        return;
+
+    shop.TryUseFoodOnPet(pet);
+    RefreshAll();
+    return;
+}
+
     //  PRIORIDADE: compra da loja
     if (shop != null && shop.HasSelectedPet())
     {

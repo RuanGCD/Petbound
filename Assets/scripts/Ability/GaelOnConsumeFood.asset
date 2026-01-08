@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 198677415c0417840a08294853817435, type: 3}
-  m_Name: liah_start_round
+  m_Name: GaelOnConsumeFood
   m_EditorClassIdentifier: 
-  abilityID: liah_start_round
+  abilityID: gael_on_consume_food
   onPreCombat: 0
   onAttack: 0
   onDeath: 0

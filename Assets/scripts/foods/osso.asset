@@ -15,5 +15,8 @@ MonoBehaviour:
   foodName: Osso
   icon: {fileID: -5308979733214062740, guid: 1f133343d2a6b534eb8a282711ea856a, type: 3}
   description: +3 de dano por 1 turno
+  type: 1
+  attackBonus: 3
+  healthBonus: 0
   ability: {fileID: 0}
   tier: 0

@@ -178,7 +178,7 @@ public class BattleManager : MonoBehaviour
         }
 
         // ======================
-        // ☠️ ON DEATH (AGORA COM SLOT LIVRE)
+        //  ON DEATH (AGORA COM SLOT LIVRE)
         // ======================
         if (triggerAOnDeath)
             a.ability.OnDeath(CreatePlayerContext());
@@ -411,6 +411,7 @@ BattleContext CreateEnemyContext()
         isPlayer = false
     };
 }
+
 void ResetTeamTemporaryStats(TeamManager team)
 {
     foreach (var slot in team.slots)
@@ -422,19 +423,24 @@ void ResetTeamTemporaryStats(TeamManager team)
 }
 public void SpawnCalopsitasAtFront(int amount, bool isPlayer)
 {
-    List<PetRuntime> team = isPlayer ? battleTeamA : battleTeamB;
+    List<PetRuntime> battleTeam = isPlayer ? battleTeamA : battleTeamB;
+    TeamManager teamManager = isPlayer ? playerTeam : enemyTeam;
 
     for (int i = 0; i < amount; i++)
     {
-        if (team.Count >= 5)
+        if (battleTeam.Count >= 5)
             break;
 
         PetRuntime calopsita = CreateCalopsitaRuntime();
 
-        // 🔥 SEMPRE entra na frente
-        team.Insert(0, calopsita);
+        //  entra na frente
+        battleTeam.Insert(0, calopsita);
+
+        //  MINGAL: aliado entrou por INVOCAÇÃO
+        TriggerMingalOnInvoke(teamManager, calopsita);
     }
 }
+
 
 
 public PetRuntime CreateCalopsitaRuntime()
@@ -490,6 +496,17 @@ void ResetBattleTeam(List<PetRuntime> team)
         pet.isDead = false; 
     }
 }
+void TriggerMingalOnInvoke(TeamManager team, PetRuntime summoned)
+{
+    foreach (var pet in team.GetLivingPets())
+    {
+        if (pet.ability is MingalAllyOnEnterAbility mingal)
+        {
+            mingal.OnBattleAllyInvoked(summoned);
+        }
+    }
+}
+
 
 
 }

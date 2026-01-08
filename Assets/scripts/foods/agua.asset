@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4431581370ba04e4a9381497dbeae500, type: 3}
   m_Name: agua
   m_EditorClassIdentifier: 
-  foodName: agua
+  foodName: "\xE1gua"
   icon: {fileID: -1501285847597453119, guid: 1f133343d2a6b534eb8a282711ea856a, type: 3}
   description: +1 de xp
+  type: 3
+  attackBonus: 0
+  healthBonus: 0
   ability: {fileID: 0}
   tier: 0

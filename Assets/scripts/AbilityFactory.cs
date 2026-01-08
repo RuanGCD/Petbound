@@ -21,6 +21,16 @@ public static class AbilityFactory
             case "liah_start_round":
                 return new LiahStartRoundAbility();
 
+            case "mingal_ally_on_buy_or_invoke":
+                return new MingalAllyOnEnterAbility();
+
+            case "gael_on_consume_food":
+                return new GaelOnConsumeFoodAbility();
+
+            case "orion_free_reroll":
+                return new OrionFreeRerollAbility();
+
+
         }
 
         Debug.LogWarning("Ability não encontrada: " + data.abilityID);

@@ -15,6 +15,10 @@ public class PetRuntime
     public int level = 1;
     public int xp = 0;
     public AbilityRuntime ability;
+    public FoodData activeFoodEffect;
+    // efeitos de combate
+    public bool shieldUsedThisBattle = false;
+
     public PetRuntime(PetData data)
     {
          this.data = data;
@@ -56,9 +60,20 @@ public class PetRuntime
 
         return false;
     }
-    public void ResetTemporaryStats()
+   public void ResetTemporaryStats()
+{
+    tempAttackBonus = 0;
+    hasAttackedThisBattle = false;
+    shieldUsedThisBattle = false;
+}
+
+    public void AddFoodEffect(FoodData food)
     {
-        tempAttackBonus = 0;
-        hasAttackedThisBattle = false;
+        activeFoodEffect = food;
     }
+    public void ClearFoodEffect()
+    {
+        activeFoodEffect = null;
+    }
+
 }

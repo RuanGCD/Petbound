@@ -18,3 +18,4 @@ MonoBehaviour:
   baseHealth: 5
   maxLevel: 3
   tier: 0
+  abilityData: {fileID: 11400000, guid: e09f1c507f6ae1b479261141653995f2, type: 2}

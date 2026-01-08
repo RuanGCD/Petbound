@@ -17,6 +17,9 @@ public class ShopManager : MonoBehaviour
 
     [Header("Player State")]
     public PlayerState playerState;
+    private FoodData selectedFood;
+    private ShopSlotUI selectedFoodSlot;
+
 
     [Header("Shop Config")]
     public int petsInShop = 3;
@@ -105,53 +108,78 @@ public class ShopManager : MonoBehaviour
     // SLOT DO TIME RECEBE PET
     // =========================
     public void TryPlaceSelectedPet(int slotIndex)
+{
+    if (selectedPet == null)
+        return;
+
+    if (!playerState.SpendGold(playerState.petCost))
+        return;
+
+    bool slotWasEmpty = teamManager.slots[slotIndex].IsEmpty;
+
+    bool success = teamManager.TryPlacePetAtSlot(selectedPet, slotIndex);
+
+    if (!success)
     {
-        if (selectedPet == null)
-            return;
-
-        if (!playerState.SpendGold(playerState.petCost))
-            return;
-
-        bool success = teamManager.TryPlacePetAtSlot(selectedPet, slotIndex);
-
-        if (!success)
-        {
-            playerState.gold += playerState.petCost;
-            return;
-        }
-        // 🔹 DISPARA A HABILIDADE
-        
-        TriggerFirstPurchaseAbilities();
-        teamManagerUI.RefreshAll();
-        RemoveSlot(selectedPet);
-
-        selectedPet = null;
-        selectedSlotUI = null;
+        playerState.gold += playerState.petCost;
+        return;
     }
+
+    // 🛒 MINGAL: somente compra normal (slot vazio)
+    if (slotWasEmpty)
+    {
+        foreach (var pet in teamManager.GetAllPets())
+        {
+            if (pet.ability is MingalAllyOnEnterAbility mingal)
+            {
+                mingal.OnShopAllyEntered(selectedPet);
+            }
+        }
+    }
+
+    TriggerFirstPurchaseAbilities();
+    teamManagerUI.RefreshAll();
+    RemoveSlot(selectedPet);
+
+    selectedPet = null;
+    selectedSlotUI = null;
+}
 
     // =========================
     // FOOD
     // =========================
     private void OnFoodClicked(FoodData food)
-    {
-        if (!playerState.SpendGold(playerState.foodCost))
-            return;
+{
+    selectedFood = food;
+    selectedFoodSlot = currentSlots.Find(s => s.GetFood() == food);
 
-        Debug.Log("Food comprada: " + food.foodName);
-        RemoveSlot(food);
-    }
-
+    Debug.Log("Food selecionada: " + food.foodName);
+}
     // =========================
     // REROLL
     // =========================
     public void Reroll()
+{
+    bool freeRerollUsed = false;
+
+    foreach (var pet in teamManager.GetAllPets())
+    {
+        if (pet.ability != null && pet.ability.TryFreeReroll())
+        {
+            freeRerollUsed = true;
+            pet.ability.OnFreeRerollUsed();
+            break; // só 1 habilidade pode aplicar
+        }
+    }
+
+    if (!freeRerollUsed)
     {
         if (!playerState.SpendGold(playerState.rerollCost))
             return;
-
-        GenerateShop();
     }
 
+    GenerateShop();
+}
     // =========================
     // HELPERS
     // =========================
@@ -242,5 +270,49 @@ private void TriggerFirstPurchaseAbilities()
         pet.ability?.OnFirstShopPurchase();
     }
 }
+public bool HasSelectedFood()
+{
+    return selectedFood != null;
+}
+public void TryUseFoodOnPet(PetRuntime pet)
+{
+    if (!playerState.SpendGold(playerState.foodCost))
+        return;
+
+    ApplyFoodEffect(pet, selectedFood);
+
+    RemoveSlot(selectedFood);
+
+    selectedFood = null;
+    selectedFoodSlot = null;
+}
+private void ApplyFoodEffect(PetRuntime pet, FoodData food)
+{
+    switch (food.type)
+    {
+        case FoodType.PermanentStat:
+            pet.attack += food.attackBonus;
+            pet.health += food.healthBonus;
+            pet.maxHealth += food.healthBonus;
+            break;
+
+        case FoodType.TemporaryStat:
+            pet.tempAttackBonus += food.attackBonus;
+            break;
+
+        case FoodType.XP:
+            pet.xp++;
+            pet.TryLevelUp();
+            break;
+
+        case FoodType.Effect:
+            pet.AddFoodEffect(food);
+            break;
+    }
+    // 🔥 DISPARA HABILIDADE AO CONSUMIR COMIDA
+    pet.ability?.OnConsumeFood(food);
+    Debug.Log($"🍎 {food.foodName} usada em {pet.data.petName}");
+}
+
 
 }

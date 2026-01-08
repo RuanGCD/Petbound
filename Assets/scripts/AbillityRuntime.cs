@@ -17,4 +17,10 @@ public abstract class AbilityRuntime
     // 🔹 LOJA / RODADA
     public virtual void OnFirstShopPurchase() { }
     public virtual void OnStartRound() { }
+    public virtual void OnConsumeFood(FoodData food) { }
+    public virtual bool TryFreeReroll() { return false; }
+    public virtual void OnFreeRerollUsed() { }
+    
+
+
 }
